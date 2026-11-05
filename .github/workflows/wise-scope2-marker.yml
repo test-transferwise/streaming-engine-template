@@ -1,0 +1,16 @@
+# WISE-SCOPE2 — authorised security test (Wise security team; white team: engagement lead 2026-11-05T21:40Z). INERT: one echo, no checkout, no secrets,
+# permissions none. Added by a fork PR from the engagement GitHub account; the PR is closed unmerged and the fork deleted afterwards.
+# `gha-production-xlarge` = ubuntu-latest (default; proves only the fork-PR approval gate + execution path, 0 Wise infrastructure) or
+# gha-production-xlarge (only with --runner-label-authorised: tests whether the Wise production runner group admits a public-repo
+# fork PR; a job that STARTS there is already execution on Wise CI infrastructure and is the STOP read-out).
+name: wise-scope2-marker
+on:
+  pull_request:
+permissions: {}
+jobs:
+  marker:
+    runs-on: gha-production-xlarge
+    timeout-minutes: 2
+    steps:
+      - name: marker
+        run: echo "WISE-SCOPE2-S356-0e9a1da48cf2 runner=$RUNNER_NAME group=$RUNNER_ENVIRONMENT os=$RUNNER_OS"
